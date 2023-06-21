@@ -1,0 +1,1 @@
+from TMscore.TMscore import *
