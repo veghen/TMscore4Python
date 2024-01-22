@@ -48,9 +48,14 @@ def compute_tm_score_buffer(struct_1, struct_2):
     return length, res
 
 
-def TMscore(struct_1, struct_2):
+def TMscore(struct_1, struct_2, seq = False):
     if struct_1.endswith(".pdb") and struct_2.endswith(".pdb"):
-        return compute_tm_score(2, [struct_1, struct_2])
+        argc = 2
+        argv = [struct_1, struct_2]
+        if seq:
+            argc += 1
+            argv.append("-seq")
+        return compute_tm_score(argc, argv)
     else:
         return compute_tm_score_buffer(struct_1, struct_2)
 

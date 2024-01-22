@@ -20,6 +20,11 @@ A Python wrapper around the original TM-score C++ code available at [Zhang Lab](
 from TMscore import TMscore
 
 lengths, results = TMscore(pdb_file_path_to_structure_1, pdb_file_path_to_structure_2)
+# residue equivalence can be established by sequence alignment by setting seq = True
+lengths, results = TMscore(pdb_file_path_to_structure_1, pdb_file_path_to_structure_2, seq = True)
+# compute TMscore from file content string; useful when the pdb file is generated from predicted coordinates; seq parameter not supported
+lengths, results = TMscore(pdb_file_string_of_structure_1, pdb_file_string_of_structure_2)
+
 print(f"length of structure 1: {lengths[0]}, length of structure 2: {lengths[1]}")
 print(f"TMscore: {results[0]}, RMSD: {results[1]}")
 ```
